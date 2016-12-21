@@ -48,3 +48,8 @@ jspm_packages
 
 # ESlint
 .eslintrc.json
+.eslintignore
+
+# PDF uploads
+uploads
+merged
