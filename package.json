@@ -4,8 +4,8 @@
   "description": "A PDF viewer!",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
     "web": "node server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
