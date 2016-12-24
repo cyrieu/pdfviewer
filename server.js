@@ -7,8 +7,7 @@ const routes = require('./routes');
 const server = new Hapi.Server();
 server.connection({ port: process.env.PORT || 3000 });
 
-console.log(process.env.COOKIE_PASSWORD);
-
+// set up Yar cookie to enable sessions
 const yarOptions = {
   cookieOptions: {
     password: process.env.COOKIE_PASSWORD,
@@ -16,6 +15,7 @@ const yarOptions = {
   },
 };
 
+// register Hapi plugins
 server.register([inert, { register: Yar, options: yarOptions }, vision], (err) => {
   if (err) {
     console.error('ERR: failed loading Hapi plugins');

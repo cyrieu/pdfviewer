@@ -18,12 +18,8 @@ $(document).ready(function() {
       if (file.type !== "application/pdf") {
         done("Please upload a pdf!");
       } else {
-        console.log(file);
         done();
       }
-    },
-    success: function(file, response) {
-      console.log(file.name);
-    },
+    }
   };
 });

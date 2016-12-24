@@ -3,6 +3,7 @@ const EasyPDFMerge = require('easy-pdf-merge');
 
 module.exports = [
   {
+    // route for homepage
     method: 'GET',
     path: '/',
     handler(request, reply) {
@@ -15,6 +16,7 @@ module.exports = [
     },
   },
   {
+    // route to handle uploading of PDFs from the dropzone
     method: 'POST',
     path: '/pdfupload',
     config: {
@@ -31,7 +33,6 @@ module.exports = [
         if (data.file) {
           // get the name of the file
           const name = data.file.hapi.filename;
-          console.log(`received request to upload ${name}`);
 
           // check if 'uploads' directory exists, if not create it
           if (!fs.existsSync(`${__dirname}/uploads`)) {
@@ -43,7 +44,6 @@ module.exports = [
           // create write stream for file
           const file = fs.createWriteStream(path);
           file.on('error', (err) => {
-            console.log(err);
             reply(JSON.stringify({ statusCode: 500, error: err, message: 'An internal server error occurred' }));
           });
 
@@ -52,7 +52,6 @@ module.exports = [
 
           // add new file to uploadedFiles session variable
           const uploadedFiles = request.yar.get('uploadedFiles');
-          console.log(`uploadedFiles is ${uploadedFiles}`);
           uploadedFiles.push(path);
           request.yar.set('uploadedFiles', uploadedFiles);
 
@@ -68,6 +67,7 @@ module.exports = [
     },
   },
   {
+    // route to handle merging of PDFs, redirects to 'viewpdf' route
     method: 'GET',
     path: '/parsepdf',
     handler(request, reply) {
@@ -88,9 +88,7 @@ module.exports = [
         });
       } else {
         // merge pdfs
-        console.log('will merge files');
         uploadedFiles.sort();
-        console.log(uploadedFiles);
         const destPath = `${__dirname}/merged/${request.yar.id}.pdf`;
         EasyPDFMerge(uploadedFiles, destPath, (err) => {
           if (err) {
@@ -102,6 +100,7 @@ module.exports = [
     },
   },
   {
+    // route to handle AJAX call to remove uploaded PDFs
     method: 'POST',
     path: '/removepdf',
     handler(request, reply) {
@@ -111,8 +110,6 @@ module.exports = [
       if (fileIndex > -1) {
         // remove file from the uploadedFiles list
         uploadedFiles.splice(fileIndex, 1);
-        console.log(`removed ${path}`);
-        console.log(`uploadedFiles is ${uploadedFiles}`);
       }
       // update uploadedFiles session variable
       request.yar.set('uploadedFiles', uploadedFiles);
@@ -120,6 +117,7 @@ module.exports = [
     },
   },
   {
+    // route to handle the viewing of PDFs using Mozilla's PDF.js
     method: 'GET',
     path: '/viewpdf',
     handler(request, reply) {
@@ -131,6 +129,7 @@ module.exports = [
     },
   },
   {
+    // route to get PDF static content
     method: 'GET',
     path: '/pdf/{file*}',
     handler: {
@@ -140,6 +139,7 @@ module.exports = [
     },
   },
   {
+    // route to get static content like js and css files
     method: 'GET',
     path: '/{file*}',
     handler: {
