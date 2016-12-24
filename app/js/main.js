@@ -7,6 +7,9 @@ $(document).ready(function() {
     parallelUploads: 1,
     addRemoveLinks: true,
     removedfile: function(file) {
+      // remove file from session variable on server
+      $.post('removepdf', { fileName: file.name });
+      // remove html element from dropzone
       var _ref;
       return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
     },
