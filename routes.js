@@ -32,8 +32,12 @@ module.exports = [
           // get the name of the file
           const name = data.file.hapi.filename;
           console.log(`received request to upload ${name}`);
+
+          // check if 'uploads' directory exists, if not create it
+          if (!fs.existsSync(`${__dirname}/uploads`)) {
+            fs.mkdirSync(`${__dirname}/uploads`);
+          }
           // generate path for file
-          // TODO same name for file
           const path = `${__dirname}/uploads/${name}`;
 
           // create write stream for file
@@ -67,6 +71,10 @@ module.exports = [
     method: 'GET',
     path: '/parsepdf',
     handler(request, reply) {
+      // check if 'merged' directory exists, if not create it
+      if (!fs.existsSync(`${__dirname}/merged`)) {
+        fs.mkdirSync(`${__dirname}/merged`);
+      }
       const uploadedFiles = request.yar.get('uploadedFiles');
       if (uploadedFiles.length === 0) {
         // no uploaded files, show the default pdf
