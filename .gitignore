@@ -52,7 +52,7 @@ jspm_packages
 
 # PDF uploads
 uploads
-merged
+merged/*
 
 # Allow default pdf
 !merged/themedicalrecord.pdf
