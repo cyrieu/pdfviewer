@@ -12,6 +12,9 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/dropzone.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -21,15 +24,36 @@
         <![endif]-->
 
         <!-- Main Content -->
-        <h1>Upload Some Records!</h1>
-        <form action="pdfupload" class="dropzone" id="pdfdropzone"></form>
-        <a href="parsepdf">View PDF!</a>
+        <div class = "site-wrapper">
+          <div class = "container">
+            <div class = "row text-center">
+              <h1>Upload <span class="light-text">your PDFs</span></h1>
+            </div>
+            <hr class = "uploadhr"/>
+            <div class = "row text-center">
+              <h1>Merge <span class="light-text">(automagically!) if uploading more than 1</span></h1>
+            </div>
+            <hr class = "mergehr"/>
+            <div class = "row text-center">
+              <h1>View <span class="light-text">your PDF as a single, unified document!</span></h1>
+            </div>
+          </div>
+          <div class = "row text-center">
+            <form action="pdfupload" class="dropzone" id="pdfdropzone"></form>
+          </div>
+          <div class = "row footer text-center">
+            <a id = "viewpdfbutton" href="parsepdf" class = "btn btn-primary">View PDF ></a>
+          </div>
+
+        </div>
 
         <!-- Load scripts -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/vendor/dropzone.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <script src="js/main.js"></script>
 
     </body>

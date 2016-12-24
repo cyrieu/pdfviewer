@@ -174,9 +174,11 @@
   box-sizing: border-box; }
 
 .dropzone {
-  min-height: 150px;
+  margin-top: 100px;
+  min-height: 300px;
   border: 2px solid rgba(0, 0, 0, 0.3);
-  background: white;
+  background: #007FA3;
+  color: white;
   padding: 20px 20px; }
   .dropzone.dz-clickable {
     cursor: pointer; }
