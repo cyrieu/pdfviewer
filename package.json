@@ -48,7 +48,6 @@
     "map-stream": "0.0.6",
     "require-dot-file": "^0.4.0",
     "run-sequence": "^1.2.2",
-    "semantic-ui": "^2.2.6",
     "vision": "^4.1.1",
     "yamljs": "^0.2.8",
     "yar": "^8.1.2"
